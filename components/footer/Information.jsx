@@ -136,7 +136,7 @@ const Information = (props) => {
                                         href="/"
                                     >
                                         <Image
-                                            src="https://epicbolivia.travel/images/logo.png"
+                                            src="https://web.epicbolivia.travel/logo.webp"
                                             alt="Information_logo"
                                             className="rounded mx-auto d-block"
                                             width={350}

@@ -15,6 +15,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/images/**",
 			},
+			{
+				protocol: "https",
+				hostname: "web.epicbolivia.travel",
+				port: "",
+				pathname: "/**",
+			},
 		],
 	},
 }
