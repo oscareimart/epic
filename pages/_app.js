@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useEffect } from "react"
+import localFont from "@next/font/local"
 import "@fortawesome/fontawesome-free/css/all.css"
 import "swiper/css"
 import "swiper/css/pagination"
@@ -18,6 +19,32 @@ import "./../styles/Footer.css"
 import "react-datetime/css/react-datetime.css"
 import Layout from "./../components/Layout"
 
+const myFont = localFont({
+	src: [
+		{
+			path: "./../public/fonts/GinóraSansRegular.otf",
+			weight: "400",
+			style: "normal",
+		},
+		{
+			path: "./../public/fonts/GinóraSansOblique.otf",
+			weight: "400",
+			style: "oblique",
+		},
+		{
+			path: "./../public/fonts/GinóraSansBold.otf",
+			weight: "700",
+			style: "normal",
+		},
+		{
+			path: "./../public/fonts/GinóraSansBoldOblique.otf",
+			weight: "700",
+			style: "oblique",
+		},
+	],
+})
+// console.log(myFont)
+
 export default function App({ Component, pageProps }) {
 	useEffect(() => {
 		require("bootstrap/dist/js/bootstrap.bundle.min.js")
@@ -31,9 +58,11 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<main className={myFont.className}>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</main>
 		</>
 	)
 }
