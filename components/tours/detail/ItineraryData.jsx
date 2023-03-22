@@ -8,6 +8,7 @@ import {
     Row,
     Col
 } from 'reactstrap'
+import { env_values } from './../../../settings/env'
 import ItineraryTable from './ItineraryTable'
 import { reporter } from 'vfile-reporter'
 import { remark } from 'remark'
@@ -42,6 +43,12 @@ const ItineraryData = (props) => {
                     // console.log()
                     // let dataHtml = await transformToHtml(row.itinerario)
                     // row.itinerario = dataHtml
+                    if (row.itinerario) {
+                        const regex = 'src="../../../..'
+                        const strContent = row.itinerario?.replaceAll(regex, `src="${env_values.URL_BACKEND}`)
+                        row.itinerario = strContent
+                    }
+                    // console.log(row.itinerario)
                 }
                 setDetailItinerary(arrayEdit)
                 setLoad(!load)
@@ -165,6 +172,7 @@ const ItineraryData = (props) => {
                                             <TabPane key={i} tabId={`${i + 1}`}>
                                                 <ItineraryTable
                                                     rowData={row}
+                                                    langData={langData}
                                                 />
                                             </TabPane>
                                         ))
