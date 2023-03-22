@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 const ItineraryTable = (props) => {
-    const { rowData } = props
+    const { rowData, langData } = props
+    // console.log(langData)
     return (
         <>
             <div className="row">
@@ -11,9 +12,9 @@ const ItineraryTable = (props) => {
                         </thead>
                         <tbody>
                             <tr className='table-dark'>
-                                <th className='px-3 text-uppercase border border-gray'>Required Time</th>
-                                <th className='px-3 text-uppercase border border-gray'>Transport</th>
-                                <th className='px-3 text-uppercase border border-gray'>Entry of the sites</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.required_time || "S/N"}</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.transport || "S/N"}</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.entry_of_sites || "S/N"}</th>
                             </tr>
                             <tr>
                                 <td>{rowData.tiempo_requerido || '-'}</td>
@@ -21,9 +22,9 @@ const ItineraryTable = (props) => {
                                 <td>{rowData.entradas || '-'}</td>
                             </tr>
                             <tr className='table-dark'>
-                                <th className='px-3 text-uppercase border border-gray'>Guia</th>
-                                <th className='px-3 text-uppercase border border-gray'>Altitud of the journey</th>
-                                <th className='px-3 text-uppercase border border-gray'>Best Moment of year</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.guia || "S/N"}</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.altitud_the_journey || "S/N"}</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.best_moment_year || "S/N"}</th>
                             </tr>
                             <tr>
                                 <td>{rowData.guia || '-'}</td>
@@ -31,9 +32,9 @@ const ItineraryTable = (props) => {
                                 <td>{rowData.mejor_epoca_visita || '-'}</td>
                             </tr>
                             <tr className='table-dark'>
-                                <th className='px-3 text-uppercase border border-gray'>Equipement</th>
-                                <th className='px-3 text-uppercase border border-gray'>Meals</th>
-                                <th className='px-3 text-uppercase border border-gray'>Hotel</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.equipement || "S/N"}</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.meals || "S/N"}</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.hotel || "S/N"}</th>
                             </tr>
                             <tr>
                                 <td>{rowData.equipo || '-'}</td>
@@ -41,7 +42,7 @@ const ItineraryTable = (props) => {
                                 <td>{rowData.hotel || '-'}</td>
                             </tr>
                             <tr className='table-dark'>
-                                <th className='px-3 text-uppercase border border-gray'>Difficulty level</th>
+                                <th className='px-3 text-uppercase border border-gray'>{langData.data?.table?.difficulty_level || "S/N"}</th>
                             </tr>
                             <tr>
                                 <td>{rowData.nivel_dificultad || '-'}</td>
