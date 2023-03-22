@@ -18,6 +18,7 @@ const OurTeam = (props) => {
             try {
                 const res = await consult.getAllData('equipos')
                 const languaje = localStorage.getItem("lan_w")
+                console.log(res)
                 if (res.status === 200 && languaje) {
                     setDataTeam({
                         data: web_data[languaje].teams,
@@ -69,7 +70,7 @@ const OurTeam = (props) => {
                                                                     </div> :
                                                                     <div className="card-body mt-3 text-sm-end">
                                                                         <h5 className="card-title">{row.attributes?.nombre || ""}</h5>
-                                                                        <p className="card-text">{row.attributes?.descripcion || ""}</p>
+                                                                        <p className="card-text">{row.attributes?.cargo || ""}</p>
                                                                         <div className='team-social-network'>
                                                                             {
                                                                                 row.attributes?.facebook && <a
@@ -112,7 +113,7 @@ const OurTeam = (props) => {
                                                                 i % 2 === 0 ?
                                                                     <div className="card-body mt-3 text-sm-start">
                                                                         <h5 className="card-title">{row.attributes?.nombre || ""}</h5>
-                                                                        <p className="card-text">{row.attributes?.descripcion || ""}</p>
+                                                                        <p className="card-text">{row.attributes?.cargo || ""}</p>
                                                                         <div className='team-social-network'>
                                                                             {
                                                                                 row.attributes?.facebook && <a
