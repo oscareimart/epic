@@ -64,11 +64,28 @@ export const getAllData = (
     }).then(res => res)
 }
 
-export const getDataToursRandom = () => {
+export const getDataToursRandom = (routeConsult = "", optionsConsult = {}) => {
+    let urlConsult = `/${routeConsult}?fields[0]=id`
+    const options = {
+        page: 1,
+        pageSize: 10,
+        ...optionsConsult
+    }
+
+    const languaje = localStorage.getItem("lan_w")
+    if (languaje) {
+        if (languaje !== "en")
+            urlConsult = `${urlConsult}${urlConsult.includes("?") ? '&' : '?'}locale=${languaje === "es" ? `${languaje}-BO` : languaje}`
+    }
+
+    if (options?.page && options?.pageSize) {
+        urlConsult = `${urlConsult}${urlConsult.includes("?") ? '&' : '?'}pagination[page]=${options?.page}&pagination[pageSize]=${options?.pageSize}`
+    }
+    // console.log(urlConsult)
     return axios({
         method: "get",
         baseURL: env_values.URL_BACKEND,
-        url: `/api/tourss?randomSort=true`,
+        url: `api/${urlConsult}`,
         headers: {
             ["Authorization"]: `bearer b5932efef3dc2127eacda1edca2e32f418fc8d3b3e137da36fd0aceaceb52661aeb66b81dc030778c889f8237b2846f3d97aefff9a62f7e31daf5687f2d64e0fab2201bd6a6d6f554a3148189b907c4711f3bfc587e4444a0d010db40773feec5b2cf5dcef2cacd73c4d2eb7cf31bcbe150a02ba2ae8ffe3dbbab72c622daed2`,
         }
@@ -92,7 +109,7 @@ export const getSingleData = (routeConsult = "", id = "", optionsRec = {}) => {
         }
     }
 
-    console.log(urlConsult)
+    // console.log(urlConsult)
     return axios({
         method: "get",
         baseURL: env_values.URL_BACKEND,
