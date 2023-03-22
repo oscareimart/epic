@@ -14,14 +14,26 @@ const RecommendedTours = (props) => {
 
         const getDataTours = async () => {
             let arrayTemp = []
+            let arrayIds = []
+            try {
+                const res = await consult.getDataToursRandom("tourss", {
+                    page: 1,
+                    pageSize: 100
+                })
+                arrayIds = res.data?.data
+            } catch (error) {
+                console.log(error.response)
+            }
+
+            // console.log(arrayIds)
             for (let i = 0; i < 2; i++) {
-                let numberRandom = Math.floor(Math.random() * 50)
+                let numberRandom = Math.floor(Math.random() * arrayIds.length)
                 let foundTour = false
                 while (!foundTour) {
                     // console.log(numberRandom)
                     try {
-                        const res = await consult.getSingleData('tourss', numberRandom)
-                        // console.log(res)
+                        const res = await consult.getSingleData('tourss', arrayIds[numberRandom]?.id)
+                        // // console.log(res)
                         if (res.status === 200) {
                             // setDataTours(res.data?.data)
                             arrayTemp.push(res.data?.data)
@@ -30,7 +42,7 @@ const RecommendedTours = (props) => {
                     } catch (error) {
                         // console.log(error)
                         foundTour = false
-                        numberRandom = Math.floor(Math.random() * 50)
+                        let numberRandom = Math.floor(Math.random() * arrayIds.length)
                     }
                 }
             }
