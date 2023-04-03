@@ -7,15 +7,28 @@
 }
 
 .copyright_logo {
-	padding-left: 8%;
-	width: 40%;
+	/* padding-left: 10%; */
+	margin-left: 10%;
+	/* width: 40%; */
 }
 
 .copyright-container p {
-	width: 60%;
+	/* width: 60%; */
 	float: right;
 	text-align: right;
-	padding-right: 5%;
+	/* padding-right: 5%; */
+	margin-right: 4%;
+}
+
+@media (max-width: 575px) {
+	.copyright-container {
+		height: auto;
+	}
+
+	.copyright-container p {
+		float: left;
+		text-align: center;
+	}
 }
 
 .informaton_footer {
