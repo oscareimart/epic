@@ -53,7 +53,7 @@ const BestTours = (props) => {
                         dataBestTours?.tours?.map((row, i) => (
                             <div key={i} className="col-md-12">
                                 <div className="row mb-5">
-                                    <div className={i % 2 === 0 ? "col-xl-6 col-lg-7 col-md-7 col-sm-12 col-7" :
+                                    <div className={i % 2 === 0 ? "col-xl-6 col-lg-7 col-md-7 col-sm-12 col-12" :
                                         "col-xl-6 col-lg-5 col-md-5 col-sm-12 col-12"}>
                                         {i % 2 === 0 ?
                                             <Link
