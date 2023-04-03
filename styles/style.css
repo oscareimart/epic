@@ -9,4 +9,6 @@ body {
 	background-repeat: repeat-y;
 	background-attachment: scroll;
 	background-size: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
 }
