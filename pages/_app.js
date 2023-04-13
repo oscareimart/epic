@@ -18,6 +18,7 @@ import "./../styles/Reviews.css"
 import "./../styles/Footer.css"
 import "react-datetime/css/react-datetime.css"
 import Layout from "./../components/Layout"
+import Script from "next/script"
 
 const myFont = localFont({
 	src: [
@@ -59,6 +60,19 @@ export default function App({ Component, pageProps }) {
 	return (
 		<>
 			<main className={myFont.className}>
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-VX4443RDJP"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-VX4443RDJP');
+        `}
+				</Script>
 				<Layout>
 					<Component {...pageProps} />
 				</Layout>
